@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PAVII_63930Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Motocicleta">
+    <Key>
+      <PropertyRef Name="IdMoto" />
+    </Key>
+    <Property Name="IdMoto" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="CodigoDeBarra" Type="String" MaxLength="13" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IdTipoDeMoto" Type="Int32" Nullable="false" />
+    <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="Stock" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TipoMotocicleta" Relationship="Self.FK_Motocicleta_TipoMotocicleta" FromRole="Motocicleta" ToRole="TipoMotocicleta" />
+  </EntityType>
+  <EntityType Name="TipoMotocicleta">
+    <Key>
+      <PropertyRef Name="IdTipoMoto" />
+    </Key>
+    <Property Name="IdTipoMoto" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Motocicleta" Relationship="Self.FK_Motocicleta_TipoMotocicleta" FromRole="TipoMotocicleta" ToRole="Motocicleta" />
+  </EntityType>
+  <Association Name="FK_Motocicleta_TipoMotocicleta">
+    <End Role="TipoMotocicleta" Type="Self.TipoMotocicleta" Multiplicity="1" />
+    <End Role="Motocicleta" Type="Self.Motocicleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoMotocicleta">
+        <PropertyRef Name="IdTipoMoto" />
+      </Principal>
+      <Dependent Role="Motocicleta">
+        <PropertyRef Name="IdTipoDeMoto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PAVII_63930Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Motocicleta" EntityType="Self.Motocicleta" />
+    <EntitySet Name="TipoMotocicleta" EntityType="Self.TipoMotocicleta" />
+    <AssociationSet Name="FK_Motocicleta_TipoMotocicleta" Association="Self.FK_Motocicleta_TipoMotocicleta">
+      <End Role="TipoMotocicleta" EntitySet="TipoMotocicleta" />
+      <End Role="Motocicleta" EntitySet="Motocicleta" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

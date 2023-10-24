@@ -1,0 +1,23 @@
+﻿input.ng-invalid {
+    background-color: pink;
+}
+
+input.ng-valid {
+    background-color: lightgreen;
+}
+
+input.ng-untouched {
+    background-color: white;
+}
+
+input.ng-pristine {
+    background-color: white;
+}
+
+/*input.ng-touched {
+    background-color: pink;
+}
+
+input.ng-dirty {
+    background-color: lightgreen;
+}*/

@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HeroMotosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Motocicleta">
+          <Key>
+            <PropertyRef Name="IdMotocicleta" />
+          </Key>
+          <Property Name="IdMotocicleta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="CodigoDeBarra" Type="nchar" MaxLength="13" Nullable="false" />
+          <Property Name="IdTipoMoto" Type="int" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="FechaAlta" Type="date" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMotocicleta">
+          <Key>
+            <PropertyRef Name="IdTipoMoto" />
+          </Key>
+          <Property Name="IdTipoMoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Motocicleta_TipoMotocicleta">
+          <End Role="TipoMotocicleta" Type="Self.TipoMotocicleta" Multiplicity="1" />
+          <End Role="Motocicleta" Type="Self.Motocicleta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMotocicleta">
+              <PropertyRef Name="IdTipoMoto" />
+            </Principal>
+            <Dependent Role="Motocicleta">
+              <PropertyRef Name="IdTipoMoto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HeroMotosModelStoreContainer">
+          <EntitySet Name="Motocicleta" EntityType="Self.Motocicleta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMotocicleta" EntityType="Self.TipoMotocicleta" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Motocicleta_TipoMotocicleta" Association="Self.FK_Motocicleta_TipoMotocicleta">
+            <End Role="TipoMotocicleta" EntitySet="TipoMotocicleta" />
+            <End Role="Motocicleta" EntitySet="Motocicleta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HeroMotosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Motocicleta">
+          <Key>
+            <PropertyRef Name="IdMotocicleta" />
+          </Key>
+          <Property Name="IdMotocicleta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CodigoDeBarra" Type="String" MaxLength="13" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IdTipoMoto" Type="Int32" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TipoMotocicleta" Relationship="Self.FK_Motocicleta_TipoMotocicleta" FromRole="Motocicleta" ToRole="TipoMotocicleta" />
+        </EntityType>
+        <EntityType Name="TipoMotocicleta">
+          <Key>
+            <PropertyRef Name="IdTipoMoto" />
+          </Key>
+          <Property Name="IdTipoMoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Motocicleta" Relationship="Self.FK_Motocicleta_TipoMotocicleta" FromRole="TipoMotocicleta" ToRole="Motocicleta" />
+        </EntityType>
+        <Association Name="FK_Motocicleta_TipoMotocicleta">
+          <End Role="TipoMotocicleta" Type="Self.TipoMotocicleta" Multiplicity="1" />
+          <End Role="Motocicleta" Type="Self.Motocicleta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMotocicleta">
+              <PropertyRef Name="IdTipoMoto" />
+            </Principal>
+            <Dependent Role="Motocicleta">
+              <PropertyRef Name="IdTipoMoto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HeroMotosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Motocicleta" EntityType="Self.Motocicleta" />
+          <EntitySet Name="TipoMotocicleta" EntityType="Self.TipoMotocicleta" />
+          <AssociationSet Name="FK_Motocicleta_TipoMotocicleta" Association="Self.FK_Motocicleta_TipoMotocicleta">
+            <End Role="TipoMotocicleta" EntitySet="TipoMotocicleta" />
+            <End Role="Motocicleta" EntitySet="Motocicleta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HeroMotosModelStoreContainer" CdmEntityContainer="HeroMotosEntities">
+          <EntitySetMapping Name="Motocicleta">
+            <EntityTypeMapping TypeName="HeroMotosModel.Motocicleta">
+              <MappingFragment StoreEntitySet="Motocicleta">
+                <ScalarProperty Name="IdMotocicleta" ColumnName="IdMotocicleta" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="CodigoDeBarra" ColumnName="CodigoDeBarra" />
+                <ScalarProperty Name="IdTipoMoto" ColumnName="IdTipoMoto" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMotocicleta">
+            <EntityTypeMapping TypeName="HeroMotosModel.TipoMotocicleta">
+              <MappingFragment StoreEntitySet="TipoMotocicleta">
+                <ScalarProperty Name="IdTipoMoto" ColumnName="IdTipoMoto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

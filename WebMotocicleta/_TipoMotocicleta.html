@@ -1,0 +1,15 @@
+﻿<div class="container">
+    <div class="jumbotron">
+        <h1>{{Titulo}}</h1>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th class="text-center table-success">Id</th>
+                <th class="text-center table-success">Nombre</th>
+            </tr>
+            <tr ng-repeat="dto in TipoMotos">
+                <td class="text-center">{{dto.IdTipoMoto}}</td>
+                <td class="text-center">{{dto.Nombre | uppercase}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

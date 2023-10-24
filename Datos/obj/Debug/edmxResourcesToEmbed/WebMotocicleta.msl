@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PAVII_63930ModelStoreContainer" CdmEntityContainer="PAVII_63930Entities1">
+    <EntitySetMapping Name="Motocicleta">
+      <EntityTypeMapping TypeName="PAVII_63930Model.Motocicleta">
+        <MappingFragment StoreEntitySet="Motocicleta">
+          <ScalarProperty Name="IdMoto" ColumnName="IdMoto" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="CodigoDeBarra" ColumnName="CodigoDeBarra" />
+          <ScalarProperty Name="IdTipoDeMoto" ColumnName="IdTipoDeMoto" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoMotocicleta">
+      <EntityTypeMapping TypeName="PAVII_63930Model.TipoMotocicleta">
+        <MappingFragment StoreEntitySet="TipoMotocicleta">
+          <ScalarProperty Name="IdTipoMoto" ColumnName="IdTipoMoto" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

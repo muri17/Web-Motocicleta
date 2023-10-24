@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HeroMotosModelStoreContainer" CdmEntityContainer="HeroMotosEntities">
+    <EntitySetMapping Name="Motocicleta">
+      <EntityTypeMapping TypeName="HeroMotosModel.Motocicleta">
+        <MappingFragment StoreEntitySet="Motocicleta">
+          <ScalarProperty Name="IdMotocicleta" ColumnName="IdMotocicleta" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="CodigoDeBarra" ColumnName="CodigoDeBarra" />
+          <ScalarProperty Name="IdTipoMoto" ColumnName="IdTipoMoto" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoMotocicleta">
+      <EntityTypeMapping TypeName="HeroMotosModel.TipoMotocicleta">
+        <MappingFragment StoreEntitySet="TipoMotocicleta">
+          <ScalarProperty Name="IdTipoMoto" ColumnName="IdTipoMoto" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
